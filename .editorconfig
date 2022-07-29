@@ -5,6 +5,8 @@
 root = true
 
 [*]
+quote = single
+
 # Indentation style
 # Possible values - tab, space
 indent_style = space
@@ -30,4 +32,5 @@ trim_trailing_whitespace = false
 
 # Denotes whether file should end with a newline
 # Possible values - true, false
-insert_final_newline = true 
+insert_final_newline = true
+
