@@ -5,7 +5,6 @@
 root = true
 
 [*]
-quote = single
 
 # Indentation style
 # Possible values - tab, space
