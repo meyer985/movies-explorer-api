@@ -14,7 +14,7 @@ module.exports.getUser = (req, res, next) => {
     .then((user) => {
       res.status(200).send({ data: user });
     })
-    .catch((err) => next(err));
+    .catch(next);
 };
 
 module.exports.addUser = (req, res, next) => {
@@ -33,13 +33,12 @@ module.exports.addUser = (req, res, next) => {
           }
         });
     })
-    .catch((err) => next(err));
+    .catch(next);
 };
-
-/* ТУТ ОШИБКИ РОНЯЮТ СЕРВЕР */
 
 module.exports.loginUser = (req, res, next) => {
   const { email, password } = req.body;
+
   UserModel.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
@@ -57,14 +56,11 @@ module.exports.loginUser = (req, res, next) => {
                 res.status(200).send({ jwt: token });
               }
             }
-          });
-        // .catch((err) => next(err));
+          })
+          .catch(next);
       }
     })
-    .catch((err) => {
-      console.log('tut');
-      next(err);
-    });
+    .catch(next);
 };
 
 module.exports.updateUser = (req, res, next) => {
@@ -72,5 +68,11 @@ module.exports.updateUser = (req, res, next) => {
   const { email, name } = req.body;
   UserModel.findByIdAndUpdate(id, { email, name }, { new: true, runValidators: true })
     .then((user) => res.status(200).send({ data: user }))
-    .catch((err) => next(err));
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new InvalidRequest('Переданы некорректные данные'));
+      } else {
+        next(err);
+      }
+    });
 };

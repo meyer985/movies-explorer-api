@@ -6,8 +6,8 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 const { auth } = require('./middlewares/auth');
-const { getUser, addUser } = require('./controllers/userControllers');
 const userRouter = require('./routes/userRouter');
+const movieRouter = require('./routes/movieRouter');
 const mainRouter = require('./routes/index');
 
 mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
@@ -19,9 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(mainRouter);
 app.use('/users', auth, userRouter);
+app.use('/movies', auth, movieRouter);
 
 app.use((err, req, res, next) => {
-  // console.log(err);
   if (!err.statusCode === '500' || !err.statusCode) {
     res.status(500).send({ message: 'Ошибка сервера' });
   } else {
