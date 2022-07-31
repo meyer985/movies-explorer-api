@@ -10,7 +10,13 @@ module.exports.auth = (req, res, next) => {
     return;
   }
 
-  const userId = encrypt.verify(authorization.split(' ')[1], 'key');
+  let userId;
+  try {
+    userId = encrypt.verify(authorization.split(' ')[1], 'key');
+  } catch {
+    next(new AuthError('Ошибка авторизации'));
+    return;
+  }
 
   UserModel.findById(userId)
     .then((result) => {

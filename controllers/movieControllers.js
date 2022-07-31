@@ -41,6 +41,18 @@ module.exports.postMovie = (req, res, next) => {
 module.exports.deleteMovie = (req, res, next) => {
   const id = req.params._id;
   MovieModel.findByIdAndDelete(id)
-    .then((result) => res.status(200).send({ data: result }))
-    .catch(next);
+    .then((result) => {
+      if (!result) {
+        throw new NotFoundError('Фильм не найден');
+      } else {
+        res.status(200).send({ data: result });
+      }
+    })
+    .catch((err) => {
+      if (err.name === 'CastError') {
+        next(new InvalidRequest('Передан некорректный Id'));
+      } else {
+        next(err);
+      }
+    });
 };
