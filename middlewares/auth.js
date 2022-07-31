@@ -3,6 +3,8 @@ const UserModel = require('../models/users');
 const AuthError = require('../errors/AuthError');
 const NotFoundError = require('../errors/NotFoundError');
 
+const { NODE_ENV, SECRET } = process.env;
+
 module.exports.auth = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer')) {
@@ -10,15 +12,15 @@ module.exports.auth = (req, res, next) => {
     return;
   }
 
-  let userId;
+  let payload;
   try {
-    userId = encrypt.verify(authorization.split(' ')[1], 'key');
+    payload = encrypt.verify(authorization.split(' ')[1], NODE_ENV === 'production' ? SECRET : 'key');
   } catch {
     next(new AuthError('Ошибка авторизации'));
     return;
   }
 
-  UserModel.findById(userId)
+  UserModel.findById(payload.id)
     .then((result) => {
       if (!result) {
         throw new NotFoundError('Пользователь не найден');
@@ -26,6 +28,6 @@ module.exports.auth = (req, res, next) => {
     })
     .catch(next);
 
-  req.headers.id = userId;
+  req.headers.id = payload.id;
   next();
 };

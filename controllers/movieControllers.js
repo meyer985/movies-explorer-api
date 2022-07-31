@@ -1,12 +1,13 @@
 const MovieModel = require('../models/movies');
 const NotFoundError = require('../errors/NotFoundError');
 const InvalidRequest = require('../errors/InvalidRequest');
+const ForbiddenError = require('../errors/InvalidRequest');
 
 module.exports.getMovies = (req, res, next) => {
   const { id } = req.headers;
   MovieModel.find({ owner: id })
     .then((result) => {
-      if (!result) {
+      if (result.length === 0) {
         throw new NotFoundError('Фильмы не найдены');
       } else {
         res.status(200).send({ data: result });
@@ -38,8 +39,14 @@ module.exports.postMovie = (req, res, next) => {
     });
 };
 
+/* ПРОВЕРКА ПОЛЬЗОВАТЛЯ ПЕРЕД УДАЛЕНИЕМ */
 module.exports.deleteMovie = (req, res, next) => {
   const id = req.params._id;
+  MovieModel.findById(id)
+    .then((result) => {
+
+    });
+
   MovieModel.findByIdAndDelete(id)
     .then((result) => {
       if (!result) {
@@ -50,7 +57,7 @@ module.exports.deleteMovie = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new InvalidRequest('Передан некорректный Id'));
+        next(new ForbiddenError('Передан некорректный Id'));
       } else {
         next(err);
       }

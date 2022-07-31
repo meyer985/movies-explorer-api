@@ -7,6 +7,8 @@ const NotFoundError = require('../errors/NotFoundError');
 const AuthError = require('../errors/AuthError');
 const ServerError = require('../errors/ServerError');
 
+const { NODE_ENV, SECRET } = process.env;
+
 module.exports.getUser = (req, res, next) => {
   const { id } = req.headers;
 
@@ -22,7 +24,7 @@ module.exports.addUser = (req, res, next) => {
   bcrypt.hash(password, 8)
     .then((hash) => {
       UserModel.create({ name, email, password: hash })
-        .then((user) => res.status(200).send({ data: user }))
+        .then((user) => res.status(201).send({ data: user }))
         .catch((err) => {
           if (err.code === 11000) {
             next(new ConflictError('Указанный Email уже зарегистрирован'));
@@ -49,7 +51,7 @@ module.exports.loginUser = (req, res, next) => {
             if (!matching) {
               throw new AuthError('Логин или пароль не совпадают');
             } else {
-              const token = encrypt.sign(user._id.toJSON(), 'key');
+              const token = encrypt.sign({ id: user._id }, NODE_ENV === 'production' ? SECRET : 'key', { expiresIn: '7d' });
               if (!token) {
                 throw new ServerError('Ошибка сервера');
               } else {
