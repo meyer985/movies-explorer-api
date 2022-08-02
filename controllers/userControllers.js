@@ -44,12 +44,12 @@ module.exports.loginUser = (req, res, next) => {
   UserModel.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        throw new NotFoundError('Пользователь не найден');
+        throw new NotFoundError('Неправильные логин или пароль');
       } else {
         bcrypt.compare(password, user.password)
           .then((matching) => {
             if (!matching) {
-              throw new AuthError('Логин или пароль не совпадают');
+              throw new AuthError('Неправильные логин или пароль');
             } else {
               const token = encrypt.sign({ id: user._id }, NODE_ENV === 'production' ? SECRET : 'key', { expiresIn: '7d' });
               if (!token) {

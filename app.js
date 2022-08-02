@@ -9,6 +9,7 @@ const app = express();
 const { errors } = require('celebrate');
 const cors = require('cors');
 const helmet = require('helmet');
+const { limiter } = require('./utils/rateLimiter');
 const mainRouter = require('./routes/index');
 const { errorHandler } = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -17,6 +18,8 @@ const { corsConfig } = require('./utils/constants');
 mongoose.connect(NODE_ENV === 'production' ? MONGO_URL : 'mongodb://localhost:27017/bitfilmsdb', {
   useNewUrlParser: true,
 });
+
+app.use(limiter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
