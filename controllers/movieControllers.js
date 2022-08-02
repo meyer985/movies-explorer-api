@@ -62,19 +62,22 @@ module.exports.deleteMovie = (req, res, next) => {
   const id = req.params._id;
   MovieModel.findById(id)
     .then((result) => {
+      if (!result) {
+        throw new NotFoundError('Передан некорректный Id');
+      }
       if (result.owner.toString() === req.headers.id) {
         MovieModel.findByIdAndDelete(id)
           .then((film) => res.status(200).send({ data: film }))
-          .catch((err) => {
-            if (err.name === 'CastError') {
-              next(new NotFoundError('Передан некорректный Id'));
-            } else {
-              next(err);
-            }
-          });
+          .catch(next);
       } else {
         throw new ForbiddenError('Ошибка доступа');
       }
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'CastError') {
+        next(new NotFoundError('Передан некорректный Id'));
+      } else {
+        next(err);
+      }
+    });
 };
