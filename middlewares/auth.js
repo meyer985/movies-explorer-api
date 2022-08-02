@@ -5,7 +5,7 @@ const NotFoundError = require('../errors/NotFoundError');
 
 const { NODE_ENV, SECRET } = process.env;
 
-module.exports.auth = (req, res, next) => {
+const auth = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer')) {
     next(new AuthError('Ошибка авторизации'));
@@ -31,3 +31,5 @@ module.exports.auth = (req, res, next) => {
   req.headers.id = payload.id;
   next();
 };
+
+module.exports = auth;
