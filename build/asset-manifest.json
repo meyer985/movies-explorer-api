@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b9a09b0f.css",
+    "main.js": "/static/js/main.1d23a18f.js",
+    "static/media/pic__COLOR_pic-min.svg": "/static/media/pic__COLOR_pic-min.b3609225aab4774dc46e551978b2a6af.svg",
+    "static/media/Inter-Bold.woff": "/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
+    "static/media/Inter-SemiBold.woff": "/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
+    "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Bold.woff2": "/static/media/Inter-Bold.ec64ea577b0349e055ad.woff2",
+    "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-SemiBold.woff2": "/static/media/Inter-SemiBold.b5f0f109bc88052d4000.woff2",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/SuisseIntl-Regular.woff": "/static/media/SuisseIntl-Regular.729fb30604cd40d104dd.woff",
+    "static/media/SuisseIntl-Regular.woff2": "/static/media/SuisseIntl-Regular.c7060fcd5dafb3e85f93.woff2",
+    "static/media/text__COLOR_landing-logo.svg": "/static/media/text__COLOR_landing-logo.1e1acb48595e81cd38675719407ad066.svg",
+    "index.html": "/index.html",
+    "static/media/logo.svg": "/static/media/logo.75b1d5c1051c73fa1f4eb428c3d47e21.svg",
+    "static/media/heart-red.svg": "/static/media/heart-red.ce5cb98bd85c5af934d3.svg",
+    "static/media/grey-heart.svg": "/static/media/grey-heart.2df82acb514c469d9356.svg",
+    "static/media/cross_icon.svg": "/static/media/cross_icon.0bf307d664094b623e01.svg",
+    "static/media/userpic.svg": "/static/media/userpic.2ecd21c618f534815d08.svg",
+    "static/media/lense.svg": "/static/media/lense.449b2250babbe158828a.svg",
+    "static/media/plus.svg": "/static/media/plus.47a9344c64aa39423eaf.svg",
+    "static/media/arrow_top_right.svg": "/static/media/arrow_top_right.a11b25bdf8f2aea4abf2.svg",
+    "static/media/burger.svg": "/static/media/burger.b71b3a967cc653a5be4f.svg",
+    "static/media/search_arrow.svg": "/static/media/search_arrow.747f594be4decf981434.svg",
+    "main.b9a09b0f.css.map": "/static/css/main.b9a09b0f.css.map",
+    "main.1d23a18f.js.map": "/static/js/main.1d23a18f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9a09b0f.css",
+    "static/js/main.1d23a18f.js"
+  ]
+}
