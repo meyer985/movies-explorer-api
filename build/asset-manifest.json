@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b9a09b0f.css",
-    "main.js": "/static/js/main.4df04d5f.js",
-    "static/media/pic__COLOR_pic-min.svg": "/static/media/pic__COLOR_pic-min.b3609225aab4774dc46e551978b2a6af.svg",
+    "main.css": "/static/css/main.eb3dad30.css",
+    "main.js": "/static/js/main.cbcdeea2.js",
     "static/media/Inter-Bold.woff": "/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-SemiBold.woff": "/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
     "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
@@ -13,6 +12,7 @@
     "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
     "static/media/SuisseIntl-Regular.woff": "/static/media/SuisseIntl-Regular.729fb30604cd40d104dd.woff",
     "static/media/SuisseIntl-Regular.woff2": "/static/media/SuisseIntl-Regular.c7060fcd5dafb3e85f93.woff2",
+    "static/media/new_photo.JPG": "/static/media/new_photo.88a54cc6c58bb14142e9.JPG",
     "static/media/text__COLOR_landing-logo.svg": "/static/media/text__COLOR_landing-logo.1e1acb48595e81cd38675719407ad066.svg",
     "index.html": "/index.html",
     "static/media/logo.svg": "/static/media/logo.75b1d5c1051c73fa1f4eb428c3d47e21.svg",
@@ -25,11 +25,11 @@
     "static/media/arrow_top_right.svg": "/static/media/arrow_top_right.a11b25bdf8f2aea4abf2.svg",
     "static/media/burger.svg": "/static/media/burger.b71b3a967cc653a5be4f.svg",
     "static/media/search_arrow.svg": "/static/media/search_arrow.747f594be4decf981434.svg",
-    "main.b9a09b0f.css.map": "/static/css/main.b9a09b0f.css.map",
-    "main.4df04d5f.js.map": "/static/js/main.4df04d5f.js.map"
+    "main.eb3dad30.css.map": "/static/css/main.eb3dad30.css.map",
+    "main.cbcdeea2.js.map": "/static/js/main.cbcdeea2.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9a09b0f.css",
-    "static/js/main.4df04d5f.js"
+    "static/css/main.eb3dad30.css",
+    "static/js/main.cbcdeea2.js"
   ]
 }
