@@ -15,7 +15,9 @@ module.exports.movieValidation = celebrate({
     duration: Joi.number().required(),
     year: Joi.number().required(),
     description: Joi.string().required(),
-    image: Joi.string().required().custom(checkUrl),
+    image: Joi.string()
+      .required()
+      .regex(/https?:\/\/(www.)?[\w\\-_~:/?#@!$&'*,;=]+\.\w+/),
     trailerLink: Joi.string().required().custom(checkUrl),
     thumbnail: Joi.string().required().custom(checkUrl),
     movieId: Joi.number().required(),
